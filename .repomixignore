@@ -1,9 +1,0 @@
-# Add patterns to ignore here, one per line
-# Example:
-# *.log
-# tmp/
-
-
-.repomixignore
-repomix.config.json
-repomix-output.md

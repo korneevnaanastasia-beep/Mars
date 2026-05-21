@@ -90,7 +90,7 @@ dv.span(`
 | Страниц (~250 сл.) | ${pages} |
 | Эпизодов | ${totalEpisodes} |
 | Персонажей | ${dossiers.length} |
-| Задач: всего / сделано | ${todoTotal} / ${todoDone} |
+| Задач: сделано / всего |  ${todoDone} / ${todoTotal}|
 | Прогресс | ${barPct.toFixed(1)}% (${totalWords.toLocaleString()} / ${targetWords.toLocaleString()} сл.) |
 `);
 ```
@@ -229,11 +229,16 @@ const files = dv.pages()
 
 dv.table(
   ['Файл', 'Изменён', 'Размер'],
-  files.map(p => [
-    p.file.link,
-    dv.luxon.DateTime.fromMillis(p.file.mtime.ts).toRelative(),
-    (p.file.size / 1024).toFixed(1) + ' KB'
-  ])
+  files.map(p => {
+    const mtime = dv.luxon.DateTime.fromMillis(p.file.mtime.ts);
+    const diff = dv.luxon.DateTime.now().diff(mtime, 'hours').hours;
+    const display = diff > 24 ? mtime.toFormat('dd.MM.yyyy HH:mm') : mtime.toRelative();
+    return [
+      p.file.link,
+      display,
+      (p.file.size / 1024).toFixed(1) + ' KB'
+    ];
+  })
 );
 ```
 
@@ -258,24 +263,31 @@ const chapters = dv.pages()
 
 const dossiers = dv.pages('"Досье"').sort(p => p.file.name);
 
-const names = dossiers.map(d => d.file.name.replace(/\(.*\)/, '').trim().split(/[\/()\s]+/)[0]);
+function getAliases(d) {
+  const raw = d.name || d.file.name.replace(/\(.*\)/, '').trim();
+  const aliases = raw.split(/[()]+/).map(s => s.trim()).filter(s => s.length > 0);
+  return [...new Set(aliases)];
+}
 
-const data = await Promise.all(dossiers.map(async (d, i) => {
-  const keyName = d.file.name.replace(/\(.*\)/, '').trim().split(/[\/()\s]+/)[0];
-  let count = 0;
+const totalCh = chapters.length;
+const data = await Promise.all(dossiers.map(async (d) => {
+  const aliases = getAliases(d);
+  let chapterCount = 0;
   for (let ch of chapters) {
     const content = await dv.io.load(ch.file.path);
-    if (content.includes(keyName)) count++;
+    if (aliases.some(a => content.includes(a))) chapterCount++;
   }
-  return [d.file.link, count, count === 0 ? '❌' : count > 3 ? '⭐⭐' : '⭐'];
+  return [d.file.link, `${chapterCount} / ${totalCh}`, chapterCount];
 }));
 
 const total = dossiers.length;
-const mentioned = data.filter(r => r[1] > 0).length;
+const mentioned = data.filter(r => r[2] > 0).length;
 
 dv.paragraph(`Найдено по имени в тексте глав: упомянуто **${mentioned}/${total}** персонажей`);
 
-dv.table(['Персонаж', 'Глав', ''], data.sort((a, b) => b[1] - a[1]));
+dv.table(['Персонаж', 'Глав', ''], data
+  .sort((a, b) => b[2] - a[2])
+  .map(r => [r[0], r[1], r[2] === 0 ? '❌' : r[2] > 3 ? '⭐⭐' : '⭐']));
 ```
 
 ---
@@ -329,26 +341,16 @@ if (ideasFile.length > 0) {
 ## Быстрые ссылки
 
 ```dataviewjs
-const chapters = dv.pages()
-  .where(p => p.file.name.startsWith('Глава_') && !p.file.name.includes('правки') && !p.file.name.includes('бэкап'))
-  .sort(p => p.file.name);
-
-const project = dv.pages()
-  .where(p => ['project', 'TODO', 'идеи', 'roadmap_v2', 'prompt_structure', 'обучения_Марселя'].includes(p.file.name))
-  .sort(p => p.file.name);
-
+const all = dv.pages().sort(p => p.file.name);
 const items = [];
 
-for (let p of project) {
-  items.push(p.file.link);
-  items.push(' · ');
+for (let p of all) {
+  const isChapter = p.file.name.startsWith('Глава_') && !p.file.name.includes('правки') && !p.file.name.includes('бэкап');
+  const isProject = ['project', 'TODO', 'идеи', 'roadmap_v2', 'prompt_structure', 'обучения_Марселя'].includes(p.file.name);
+  if (isChapter || isProject) {
+    items.push(p.file.link);
+  }
 }
 
-for (let ch of chapters) {
-  items.push(dv.fileLink(ch.file.path, false, ch.file.name.replace('Глава_', 'Глава ')));
-  items.push(' · ');
-}
-
-items.pop();
-dv.span(...items);
+dv.list(items);
 ```
