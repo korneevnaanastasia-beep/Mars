@@ -1,1 +1,7 @@
-{}
+{
+  "enabledCssSnippets": [
+    "dashboard-wide",
+    "dashboard-1920",
+    "dashboard-v3"
+  ]
+}

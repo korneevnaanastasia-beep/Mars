@@ -1,0 +1,148 @@
+/*
+ * dashboard-1920.css — Full-width 1920×1080 Obsidian Dashboard
+ * Используется с cssclasses: dashboard-1920 в YAML
+ */
+
+/* === FULL-WIDTH OVERRIDES === */
+.dashboard-1920 {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    padding-top: 20px !important;
+}
+
+.dashboard-1920 .markdown-preview-section {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.dashboard-1920 .markdown-preview-sizer {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.dashboard-1920 .cm-sizer,
+.dashboard-1920 .cm-content,
+.dashboard-1920 .cm-line {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* === TITLE === */
+.dashboard-1920 h1:first-child {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--interactive-accent);
+}
+
+/* === SECTION HEADERS === */
+.dashboard-1920 h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--interactive-accent);
+    margin: 20px 0 12px 0;
+    padding-left: 0;
+}
+
+/* === STAT CARDS (no hover) === */
+.dashboard-1920 .stat-card-plain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: var(--background-secondary);
+  border-radius: 14px;
+  min-height: 120px;
+  border: 1px solid var(--background-modifier-border);
+  cursor: default;
+}
+.dashboard-1920 .stat-card-plain:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: var(--background-modifier-border) !important;
+}
+.dashboard-1920 .stat-value {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.dashboard-1920 .stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.dashboard-1920 .stat-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+/* === SECTION CARD === */
+.dashboard-1920 .section-card {
+  background: var(--background-secondary);
+  border-radius: 14px;
+  padding: 16px 20px;
+}
+
+/* === CHARACTER TABLE === */
+.dashboard-1920 .char-table {
+  display: grid;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--background-secondary);
+}
+.dashboard-1920 .char-table > div {
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* === BADGE (role chip) === */
+.dashboard-1920 .badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* === WARNING BLOCK === */
+.dashboard-1920 .warning-block {
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* === LINK BUTTON === */
+.dashboard-1920 .link-btn {
+  display: inline-block;
+  background: var(--background-primary);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--interactive-accent);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.dashboard-1920 .link-btn:hover {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+/* === HEADER ROW (for tables) === */
+.dashboard-1920 .hdr-cell {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(255,255,255,0.04);
+}
