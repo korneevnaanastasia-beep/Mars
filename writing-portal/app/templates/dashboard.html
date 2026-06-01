@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block title %}Дашборд — Писательский Портал{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Profile Card -->
+    <div class="profile-card glass">
+        <div class="profile-level">
+            <div class="level-ring" style="--progress: {{ user.xp_percent() }}; --color: {{ user.get_title()[2] }}">
+                <div class="level-value">
+                    <span class="level-num">{{ user.calculate_level() }}</span>
+                    <span class="level-label">УРОВЕНЬ</span>
+                </div>
+            </div>
+        </div>
+        <div class="profile-info">
+            <h1 class="profile-name">{{ user.name }}</h1>
+            <div class="profile-title" style="color: {{ user.get_title()[2] }}">
+                {{ user.get_title()[1] }}
+            </div>
+            <div class="xp-bar-container">
+                <div class="xp-bar-info">
+                    <span>Опыт</span>
+                    <span>{{ user.xp_in_current_level() }} / {{ user.xp_needed_in_level() }} ✦</span>
+                </div>
+                <div class="xp-bar">
+                    <div class="xp-bar-fill" style="width: {{ user.xp_percent() }}%; background: {{ user.get_title()[2] }}"></div>
+                </div>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span class="stat-value">{{ user.total_words_written|default(0) }}</span>
+                    <span class="stat-label">Всего слов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">{{ user.total_sessions|default(0) }}</span>
+                    <span class="stat-label">Сессий</span>
+                </div>
+                <div class="stat-item streak-display">
+                    <span class="stat-value">🔥 {{ user.current_streak }}</span>
+                    <span class="stat-label">Стрик</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Today's Stats -->
+    <div class="section">
+        <h2 class="section-title">📅 Сегодня</h2>
+        <div class="stats-grid">
+            <div class="stat-card glass">
+                <div class="stat-icon">✍️</div>
+                <div class="stat-detail">
+                    <span class="stat-number">{{ today_log.words_written|default(0) }}</span>
+                    <span class="stat-desc">слов написано</span>
+                    {% if today_log and today_log.words_written >= streak_min_words %}
+                        <span class="stat-badge success">✅ Цель дня</span>
+                    {% elif today_log and today_log.words_written > 0 %}
+                        <span class="stat-badge warning">⏳ Осталось {{ streak_min_words - today_log.words_written }} слов</span>
+                    {% else %}
+                        <span class="stat-badge danger">⏰ Ещё не писала</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-detail">
+                    <span class="stat-number">{{ today_log.xp_earned|default(0) }}</span>
+                    <span class="stat-desc">XP заработано</span>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon">💰</div>
+                <div class="stat-detail">
+                    <span class="stat-number">{{ user.coins }}</span>
+                    <span class="stat-desc">монет</span>
+                    <span class="stat-sub" style="color: #e040fb">{{ user.crystals }} 💎</span>
+                </div>
+            </div>
+            <div class="stat-card glass">
+                <div class="stat-icon">❤️</div>
+                <div class="stat-detail">
+                    <span class="stat-number">{{ user.hp }}%</span>
+                    <span class="stat-desc">HP</span>
+                    <div class="hp-bar-mini">
+                        <div class="hp-bar-fill" style="width: {{ user.hp }}%; background: {% if user.hp > 60 %}#4caf50{% elif user.hp > 30 %}#ff9800{% else %}#f44336{% endif %}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weekly Stats -->
+    <div class="section">
+        <h2 class="section-title">📊 Эта неделя</h2>
+        <div class="week-stats glass">
+            <div class="week-stat-item">
+                <span class="week-stat-number">{{ week_words }}</span>
+                <span class="week-stat-label">слов за неделю</span>
+            </div>
+            <div class="week-stat-item">
+                <span class="week-stat-number">{{ week_active_days }}/7</span>
+                <span class="week-stat-label">активных дней</span>
+            </div>
+            <div class="week-stat-item">
+                <span class="week-stat-number">{% if week_active_days > 0 %}{{ (week_words / week_active_days)|int }}{% else %}0{% endif %}</span>
+                <span class="week-stat-label">слов/день в среднем</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Streak Progress -->
+    <div class="section">
+        <h2 class="section-title">🔥 Стрик</h2>
+        <div class="streak-card glass">
+            <div class="streak-main">
+                <span class="streak-number">{{ user.current_streak }}</span>
+                <span class="streak-label">дней подряд</span>
+            </div>
+            <div class="streak-milestones">
+                <div class="milestone {% if user.current_streak >= 7 %}achieved{% endif %}">
+                    <span>🔥7</span>
+                    <span class="milestone-label">×1.5 XP</span>
+                </div>
+                <div class="milestone {% if user.current_streak >= 30 %}achieved{% endif %}">
+                    <span>🔥🔥30</span>
+                    <span class="milestone-label">×2.0 XP</span>
+                </div>
+                <div class="milestone {% if user.current_streak >= 90 %}achieved{% endif %}">
+                    <span>🔥🔥🔥90</span>
+                    <span class="milestone-label">×2.5 XP</span>
+                </div>
+                <div class="milestone {% if user.current_streak >= 365 %}achieved{% endif %}">
+                    <span>🔥🔥🔥🔥365</span>
+                    <span class="milestone-label">×3.0 XP</span>
+                </div>
+            </div>
+            {% if user.stempos > 0 %}
+                <div class="stempo-info">
+                    🧊 Заморозок: {{ user.stempos }} — можно восстановить стрик
+                </div>
+            {% endif %}
+            <div class="streak-goal">
+                <span>Цель дня: {{ streak_min_words }} слов</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Sessions -->
+    <div class="section">
+        <h2 class="section-title">📜 Последние сессии</h2>
+        <div class="sessions-list glass">
+            {% if recent_sessions %}
+                {% for session in recent_sessions %}
+                    <div class="session-item">
+                        <div class="session-date">{{ session.created_at.strftime('%d.%m %H:%M') }}</div>
+                        <div class="session-words">✍️ {{ session.words_written }} слов</div>
+                        <div class="session-xp">+{{ session.xp_earned }} XP</div>
+                        <div class="session-coins">+{{ session.coins_earned }} 🪙</div>
+                        {% if session.duration_minutes > 0 %}
+                            <div class="session-duration">⏱️ {{ session.duration_minutes }} мин</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <p>Начни писать, чтобы увидеть сессии!</p>
+                    <a href="/editor" class="btn-primary">✍️ Открыть редактор</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
