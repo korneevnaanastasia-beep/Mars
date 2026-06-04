@@ -135,15 +135,14 @@ rows:
               const tk = tc.match(/\[[ x]\]/g) || [];
               tt = tk.length; td = tk.filter(t => t === '[x]').length;
             }
-            let total = chs.length, tw = 0, done = 0, aw = [], eps = 0;
+            let total = chs.length, tw = 0, done = 0, dw = 0, aw = [], eps = 0;
             for (let c of chs) {
               const ct = await dv.io.load(c.file.path);
               const w = ct.split(/\s+/).filter(x => x.length > 0).length;
               tw += w; aw.push(w);
-              if (ct.includes('**Конец')) done++;
+              if (ct.includes('**Конец')) { done++; dw += w; }
               const e = ct.match(/Эпизод \d+/g); if (e) eps += e.length;
             }
-            const dw = aw.length > 1 ? aw.slice(0, -1).reduce((a, b) => a + b, 0) : 0;
             const avg = total ? Math.round(tw / total) : 0;
             const mn = aw.length ? Math.min(...aw) : 0;
             const mx = aw.length ? Math.max(...aw) : 0;
