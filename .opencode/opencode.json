@@ -3,7 +3,8 @@
   "default_agent": "Мафиози",
   "permission": {
     "skill": {
-      "intellisearch": "allow"
+      "intellisearch": "allow",
+      "протокол-правок": "allow"
     }
   },
   "mcp": {
