@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f3c49b4ec9fc06bb",
+        "id": "9fef471f54e07801",
         "type": "tabs",
         "children": [
           {
-            "id": "b0d53ddbd8e7c968",
+            "id": "bc4523fb97d7b49f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -180,7 +180,7 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "b0d53ddbd8e7c968",
+  "active": "bc4523fb97d7b49f",
   "lastOpenFiles": [
     "AGENTS.md",
     "4-Готово/Глава_6.md",
