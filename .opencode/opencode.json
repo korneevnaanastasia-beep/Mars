@@ -4,7 +4,8 @@
   "permission": {
     "skill": {
       "intellisearch": "allow",
-      "protocol-pravok": "allow"
+      "protocol-pravok": "allow",
+      "evaluate-premortem": "allow"
     }
   },
   "mcp": {
