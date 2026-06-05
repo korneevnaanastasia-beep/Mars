@@ -4,43 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "be6fbf4a8d019232",
+        "id": "7ec31cff1258e082",
         "type": "tabs",
-        "dimension": 61.38855054811205,
         "children": [
           {
-            "id": "6ee0800acbdc511c",
+            "id": "d52ee48bd9c16781",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "4-Готово/Глава_7.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Глава_7"
-            }
-          }
-        ]
-      },
-      {
-        "id": "740bdef76537835b",
-        "type": "tabs",
-        "dimension": 38.61144945188794,
-        "children": [
-          {
-            "id": "e5692d6f04581ebc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2-Черновик/Правки/Правки_7_глава.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Правки_7_глава"
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -206,13 +180,13 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "e5692d6f04581ebc",
+  "active": "d52ee48bd9c16781",
   "lastOpenFiles": [
     "4-Готово/Глава_7.md",
+    "4-Готово/Глава_6.md",
     "2-Черновик/Правки/Правки_7_глава.md",
     "4-Готово/Глава_1.md",
     "AGENTS.md",
-    "4-Готово/Глава_6.md",
     "4-Готово/Глава_4.md",
     "4-Готово/Глава_3.md",
     "4-Готово/Глава_2.md",
