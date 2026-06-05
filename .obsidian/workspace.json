@@ -11,10 +11,14 @@
             "id": "d52ee48bd9c16781",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "4-Готово/Глава_7.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "Глава_7"
             }
           }
         ]
