@@ -4,21 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "567b0c680346fef2",
+        "id": "4ab932d26d8053d2",
         "type": "tabs",
         "children": [
           {
-            "id": "7f9a84f1bea20d67",
+            "id": "5c8308e627ab7490",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Черновик/Черновик.md",
+                "file": "2-Черновик/Глава_8.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Черновик"
+              "title": "Глава_8"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8bcaa33fac47642f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7d338eb87be80bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2-Черновик/Правки/Правки_8_глава.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Правки_8_глава"
             }
           }
         ]
@@ -41,7 +61,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Файловый менеджер"
@@ -78,7 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 233.5
+    "width": 200.5
   },
   "right": {
     "id": "783d81ef1b7b27bc",
@@ -156,13 +176,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Глава_6.md",
+                "file": "4-Готово/Глава_1.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Структура Глава_6"
+              "title": "Структура Глава_1"
             }
           }
         ],
@@ -170,7 +190,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 839.5,
+    "width": 302.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -184,30 +204,37 @@
       "bases:Создать новую базу": false
     }
   },
-  "active": "7f9a84f1bea20d67",
+  "active": "5c8308e627ab7490",
   "lastOpenFiles": [
+    "2-Черновик/Правки/Правки_8_глава.md",
     "2-Черновик/Глава_8.md",
-    "4-Готово/Глава_7.md",
     "4-Готово/Глава_1.md",
-    "2-Черновик/Черновик.md",
     "dashboard.md",
-    "Правки_сводная.md",
-    "2-Черновик/Правки/Правки_1_глава.md",
-    "2-Черновик/Правки/Правки_2_глава.md",
-    "4-Готово/Глава_6.md",
-    "3-Рецензии/Рецензия_все_главы_1-7.md",
+    "4-Готово/Глава_7.md",
+    "subs.md",
     "4-Готово/Глава_4.md",
     "4-Готово/Глава_2.md",
     "4-Готово/Глава_3.md",
     "4-Готово/Глава_5.md",
-    "2-Черновик/Правки/Правки_8_глава.md",
-    "0-Сырьё/идеи.md",
-    "1-План/project.md",
-    "AGENTS.md",
+    "4-Готово/Глава_6.md",
+    "8-Материалы/Промпты_для_генерации_картинок/Лёва.md",
+    "ПЛАН_РАБОТЫ.md",
+    "8-Материалы/Промпты_для_генерации_картинок/Даня.md",
+    "Правки_сводная.md",
+    "7-Промпты/prompt_structure.md",
     "7-Промпты/Энтони_Рецензер.md",
-    "3-Рецензии/Рецензия_1.md",
-    "3-Рецензии/Рецензия_2.md",
-    "эксперементы/SPECIFICATION.md",
+    "7-Промпты/Разговорный.md",
+    "7-Промпты/Писательский.md",
+    "6-Лор/супер_способности_вампиров.md",
+    "6-Лор/обучения_Марселя.md",
+    "6-Лор/механика_магии.md",
+    "6-Лор/команда_мафия.md",
+    "5-Персонажи/Филлип.md",
+    "5-Персонажи/Слава.md",
+    "5-Персонажи/Марсель.md",
+    "доллар.txt",
+    "_tmp_opencode_copy.json",
+    "8-Материалы/бабушкина_квартира/4045425674769e435c9d7b6be6f286ad.jpg",
     "эксперементы",
     "writing-portal/app/services/__pycache__/xp_service.cpython-314.pyc",
     "writing-portal/app/services/__pycache__/__init__.cpython-314.pyc",
@@ -216,13 +243,7 @@
     "writing-portal/app/routes/__pycache__/dashboard.cpython-314.pyc",
     "writing-portal/app/routes/__pycache__/api.cpython-314.pyc",
     "writing-portal/app/utils/__init__.py",
-    "writing-portal/app/templates/profile.html",
-    "writing-portal/app/templates/editor.html",
-    "Без названия.md",
-    "2-Черновик/Правки/Правки_6_глава.md",
     "8-Материалы/08982af842ac3de935c0573416a6ee8d.jpg",
-    "1-План/TODO.md",
-    "для проверки/для проверки кими.md",
     "8-Материалы/питер/питер.jpg",
     "8-Материалы/питер/v880_tVS-MEx0py0.jpg",
     "8-Материалы/питер/i.webp",
@@ -230,7 +251,6 @@
     "8-Материалы/питер/3b637f45f4ae6b216aab739ed37e740e.jpg",
     "8-Материалы/бабушкина_квартира/алевклнквлн.jpg",
     "8-Материалы/бабушкина_квартира/maxresdefault.jpg",
-    "8-Материалы/бабушкина_квартира/Level_Soviet.webp",
-    "8-Материалы/бабушкина_квартира/5300f2e69beb34dee1033a64d13f5ba0.jpg"
+    "8-Материалы/бабушкина_квартира/Level_Soviet.webp"
   ]
 }

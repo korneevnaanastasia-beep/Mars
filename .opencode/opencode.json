@@ -1,25 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "Мафиози",
-  "instructions": ["AGENTS.md"],
   "permission": {
     "skill": {
-      "*": "deny",
-      "intellisearch": "allow",
-      "protocol-pravok": "allow",
-      "evaluate-premortem": "allow"
+      "intellisearch": "allow"
     }
   },
   "mcp": {
-    "agentmemory": {
-      "type": "local",
-      "command": ["agentmemory", "mcp"],
-      "environment": {
-        "AGENTMEMORY_URL": "http://localhost:3111",
-        "CONSOLIDATION_ENABLED": "true"
-      },
-      "enabled": true
-    },
     "deepwiki": {
       "type": "remote",
       "url": "https://mcp.deepwiki.com/mcp",
