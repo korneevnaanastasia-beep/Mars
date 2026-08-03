@@ -231,11 +231,14 @@ rows:
           type: markdown
           content: |
             ```dataviewjs
+            (async () => {
             const docs = dv.pages('"5-Персонажи"').sort(p => p.file.name);
 
-            if (docs.length === 0) { dv.paragraph('Файлы в папке 5-Персонажи/ не найдены.'); }
+            if (docs.length === 0) {
+              dv.paragraph('Файлы в папке 5-Персонажи/ не найдены.');
+              return;
+            }
 
-            // role colors
             const roleColors = {
               'Главный герой': ['#9c27b0', 'rgba(156,39,176,0.15)'],
               'Отец': ['#455a64', 'rgba(69,90,100,0.15)'],
@@ -292,9 +295,10 @@ rows:
                   hdrC + 'Персонаж</div>' +
                   hdrC + 'Роль</div>' +
                   hdrC + 'Возраст</div>' +
-                  hdrR + 'Изменён</div></div>' +
+                  hdrR + 'Обновлён</div></div>' +
                 rows +
               '</div>';
+            })();
             ```
   - columns:
       - width: 12
@@ -309,7 +313,10 @@ rows:
           content: |
             ```dataviewjs
             const todoPages = dv.pages().where(p => p.file.name === 'TODO');
-            if (todoPages.length === 0) { dv.paragraph('Файл TODO.md не найден.'); }
+            if (todoPages.length === 0) {
+              dv.paragraph('Файл TODO.md не найден.');
+              return;
+            }
 
             const content = await dv.io.load(todoPages[0].file.path);
             const lines = content.split('\n');
