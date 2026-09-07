@@ -7,7 +7,6 @@ tags:
   - book
   - writing
 ---
-
 # 📊 Дашборд романа
 
 ```dashboard
